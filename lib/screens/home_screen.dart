@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_getx/controllers/todo_controller.dart';
-import 'package:todo_getx/models/todo.dart';
 import 'package:todo_getx/screens/widgets/todo_form.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final todoControllerP = Get.find<TodoController>();
+    Get.find<TodoController>();
     return Scaffold(
       appBar: AppBar(
         title: Text("Todo App"),
@@ -24,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
             itemBuilder: (context, index) {
               return ListTile(
                 onTap: () {
-                  //TODO:to update todo
                   showModalBottomSheet(
                     context: context,
                     builder: (context) {
@@ -46,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 trailing: IconButton(
                   onPressed: () {
-                    todoController.deleteTodo(todoController.todos[index].id);
+                    todoController.deleteTodo(todoController.todos[index]);
                   },
                   icon: Icon(Icons.delete),
                 ),
